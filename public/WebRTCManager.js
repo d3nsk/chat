@@ -2,9 +2,9 @@
 // CDNからのインポートを削除
 
 export class WebRTCManager {
-    constructor(serverUrl = null) {
-        // サーバーURLの決定（環境変数 > 引数 > デフォルト）
-        const url = serverUrl || process.env.SIGNALING_SERVER_URL || 'http://localhost:3001';
+    constructor(serverUrl = 'http://localhost:3001') {
+        // サーバーURLの決定（引数 > デフォルト）
+        const url = serverUrl || 'http://localhost:3001';
         
         // Socket.IOがグローバルに利用可能かチェック
         if (typeof io === 'undefined') {

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P2P Chat</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Socket.IOクライアントライブラリ -->
+    <script src="https://cdn.socket.io/4.7.0/socket.io.min.js"></script>
+</head>
+<body>
+    <div class="app">
+        <!-- ログイン画面 -->
+        <div id="loginScreen" class="login-screen">
+            <div class="login-container">
+                <h1>P2P Chat</h1>
+                <p>ユーザー名を入力してチャットに参加してください</p>
+                <div class="login-form">
+                    <input type="text" id="usernameInput" placeholder="ユーザー名" maxlength="20">
+                    <button id="joinButton">参加</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- チャット画面 -->
+        <div id="chatScreen" class="chat-screen hidden">
+            <div class="chat-header">
+                <h2>P2P Chat</h2>
+                <div class="user-info">
+                    <span id="currentUser"></span>
+                    <button id="disconnectButton">切断</button>
+                </div>
+            </div>
+
+            <div class="chat-container">
+                <!-- ユーザーリスト -->
+                <div class="users-panel">
+                    <h3>オンラインユーザー</h3>
+                    <div id="usersList" class="users-list">
+                        <!-- ユーザーリストがここに動的に追加されます -->
+                    </div>
+                </div>
+
+                <!-- チャットエリア -->
+                <div class="chat-area">
+                    <div id="messagesContainer" class="messages-container">
+                        <!-- メッセージがここに動的に追加されます -->
+                    </div>
+
+                    <div class="message-input-container">
+                        <div class="message-input-wrapper">
+                            <input type="text" id="messageInput" placeholder="メッセージを入力..." disabled>
+                            <button id="sendButton" disabled>送信</button>
+                        </div>
+                        <div class="connection-status">
+                            <span id="connectionStatus">接続中...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 環境変数またはデフォルトのサーバーURLを設定
+        window.SIGNALING_SERVER_URL = window.location.hostname === 'localhost' 
+            ? 'http://localhost:3001' 
+            : 'https://your-railway-app-url.railway.app';
+    </script>
+    <script type="module" src="app.js"></script>
+</body>
+</html> 

@@ -65,7 +65,7 @@
         // 環境変数またはデフォルトのサーバーURLを設定
         window.SIGNALING_SERVER_URL = window.location.hostname === 'localhost' 
             ? 'http://localhost:3001' 
-            : 'https://your-railway-app-url.railway.app';
+            : (window.SIGNALING_SERVER_URL || 'https://your-railway-app-url.railway.app');
     </script>
     <script type="module" src="app.js"></script>
 </body>

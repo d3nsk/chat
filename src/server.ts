@@ -11,7 +11,9 @@ const io = new Server(server, {
       "http://localhost:3000", 
       "http://127.0.0.1:3000",
       "https://*.vercel.app",
-      "https://*.railway.app"
+      "https://*.railway.app",
+      "https://chat-jet-eight-27.vercel.app",
+      "*"  // 開発中は全て許可（本番では削除）
     ],
     methods: ["GET", "POST"],
     credentials: true

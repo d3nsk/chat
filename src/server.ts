@@ -85,6 +85,10 @@ io.on('connection', (socket) => {
 });
 
 const PORT = process.env.PORT || 3001;
-server.listen(PORT, () => {
+console.log(`Starting server on port ${PORT}`);
+console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+
+server.listen(Number(PORT), '0.0.0.0', () => {
   console.log(`Signaling server running on port ${PORT}`);
+  console.log(`Health check available at: http://localhost:${PORT}/health`);
 }); 
